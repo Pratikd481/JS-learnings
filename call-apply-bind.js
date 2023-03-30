@@ -24,3 +24,18 @@ about.apply(user1, ["guiter", "Mozart"]);
 const customFunc = about.bind(user1, "guiter", "Mozart");
 customFunc();
 //bind is same as call it' just return the method.
+
+//*********************Warning*****************************/
+console.log("============================");
+const user = {
+    firstName: "Pratik",
+    age: 28,
+    about: function (hobby, favMusicion) {
+        console.log(this.firstName, this.age, hobby, favMusicion);
+    },
+};
+user.about("guiter", "Mozart");
+const myNewFunc = user.about; // There is no this value for myNewFunc. We need to bind it with user
+myNewFunc("guiter", "Mozart");
+const myNewFunc2 = user.about.bind(user1, "guiter", "Mozart");
+myNewFunc2(); //it has this value because we bind it wih user
