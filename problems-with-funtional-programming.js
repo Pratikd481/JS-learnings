@@ -107,3 +107,29 @@ console.log("obj2 key accessed throught obj1: ",obj1.key3);
 // If we are trying to access a key of a obect which is not available in the object the it will check for the key in its __proto__. If key present in its __proto__ then it will print that.
 
 console.log("======== END Understanding __proto__ or [[prototype]]===================");
+
+
+
+console.log("*");
+console.log("*");
+console.log("*");
+
+console.log("============ Starting solution  2 using __proto__ or [[prototype]]  =====================");
+
+function createUserSample3(firstName, lastName, age) {
+    const user =  Object.create(userMethods);
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.age = age;
+    return user;
+}
+
+const user6 = createUserSample3("user6", "Das", 24);
+console.log(user6.about());
+const user7 = createUserSample3("user7", "Sarkar", 24);
+console.log(user7.about());
+console.log('user7 = ',user7);
+
+/**
+In this way  we d not have to add new function (Which is added in userMethods) as a referance in the createUser fucntio. All newly added fucntion will be available in the __proto__ or [[prototype]. So if the called method is not available in createUser function it will check in the __proto__ or [[prototype].
+ */
