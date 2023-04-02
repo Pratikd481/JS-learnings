@@ -157,3 +157,30 @@ console.log("prototype of hello function : ", hello.prototype);
 console.log("Calling sing function assigned in protorype :");
 hello.prototype.sing();
 console.log("============ End Understanding prototype property of function  =====================");
+
+console.log("*");
+console.log("*");
+console.log("*");
+console.log("============ Solution 3 using prototype property  =====================");
+function createUserSample4(firstName, lastName, age) {
+    const user = Object.create(createUserSample4.prototype);
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.age = age;
+    return user;
+}
+createUserSample4.prototype.about = function () {
+    return `${this.firstName} is ${this.age} year old`;
+};
+
+createUserSample4.prototype.is18 = function () {
+    return this.age >= 18;
+};
+const user8 = createUserSample4("user8", "Das", 24);
+console.log(user8.about());
+const user9 = createUserSample4("user9", "Sarkar", 24);
+console.log(user9.about());
+console.log("user9 = ", user9);
+/**
+Now if we add anything to the prototype object of the create user funciton. Then those will be automatically available to the user object because of the object chaining created using Object.create();
+ */
